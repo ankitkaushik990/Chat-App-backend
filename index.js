@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const { default: axios } = require("axios");
+const dotenv = require("dotenv");
+dotenv.config();
+const PORT = process.env.PORT;
 
 const app = express();
 app.use(express.json());
@@ -22,6 +25,6 @@ app.post("/authenticate", async (req, res) => {
   return res.json({ username: username, secret: "sha256..." });
 });
 
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log("app is listening on Port 3001");
 });
